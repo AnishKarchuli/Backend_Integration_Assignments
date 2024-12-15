@@ -13,18 +13,18 @@ const AddHotelForm = () => {
         checkOutTime: "",
         amenities: "",
         priceRange: "",
-        reservationsNeeded: "",
-        isParkingAvailable: "",
-        isWifiAvailable: "",
-        isPoolAvailable: "",
-        isSpaAvailable: "",
-        isRestaurantAvailable: "",
+        reservationsNeeded: false,
+        isParkingAvailable: false,
+        isWifiAvailable: false,
+        isPoolAvailable: false,
+        isSpaAvailable: false,
+        isRestaurantAvailable: false,
         photos: ""
     })
 
     const handleChange = (event) => {
-        const {name, value} = event.target;
-        setFormData((prevState) => ({...prevState, [name]: name === "rating" ? parseInt(value) : value}))
+        const {name, type, checked, value} = event.target;
+        setFormData((prevState) => ({...prevState, [name]: type === "checkbox" ? checked : name === "rating" ? parseInt(value) : value}))
     }
 
     const handleSubmit = async (event) => {
@@ -93,22 +93,22 @@ const AddHotelForm = () => {
                 <input type="text" name="priceRange" value={formData.priceRange} onChange={handleChange} />
                 <br /><br />
                 <label>Reservations Needed:</label>
-                <input type="checkbox" name="reservationsNeeded" value={formData.reservationsNeeded} onChange={handleChange} />
+                <input type="checkbox" name="reservationsNeeded" checked={formData.reservationsNeeded} onChange={handleChange} />
                 <br /><br />
                 <label>Is Parking Available:</label>
-                <input type="checkbox" name="isParkingAvailable" value={formData.isParkingAvailable} onChange={handleChange} />
+                <input type="checkbox" name="isParkingAvailable" checked={formData.isParkingAvailable} onChange={handleChange} />
                 <br /><br />
                 <label>Is WiFi Available:</label>
-                <input type="checkbox" name="isWifiAvailable" value={formData.isWifiAvailable} onChange={handleChange} />
+                <input type="checkbox" name="isWifiAvailable" checked={formData.isWifiAvailable} onChange={handleChange} />
                 <br /><br />
                 <label>Is Pool Available:</label>
-                <input type="checkbox" name="isPoolAvailable" value={formData.isPoolAvailable} onChange={handleChange} />
+                <input type="checkbox" name="isPoolAvailable" checked={formData.isPoolAvailable} onChange={handleChange} />
                 <br /><br />
                 <label>Is Spa Available:</label>
-                <input type="checkbox" name="isSpaAvailable" value={formData.isSpaAvailable} onChange={handleChange} />
+                <input type="checkbox" name="isSpaAvailable" checked={formData.isSpaAvailable} onChange={handleChange} />
                 <br /><br />
                 <label>Is Restaurant Available:</label>
-                <input type="checkbox" name="isRestaurantAvailable" value={formData.isRestaurantAvailable} onChange={handleChange} />
+                <input type="checkbox" name="isRestaurantAvailable" checked={formData.isRestaurantAvailable} onChange={handleChange} />
                 <br /><br />
                 <label>Photos:</label>
                 <br />
